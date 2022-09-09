@@ -1,17 +1,18 @@
 package com.sg.superhero.dao;
 
 import com.sg.superhero.entity.Orginization;
+import com.sg.superhero.entity.Sighting;
 
 import java.util.List;
 
 public interface SightingDao {
-    Orginization getOrginizationById(int id);
+    Sighting getSightingById(int id);
 
-    List<Orginization> getAllOrginization();
+    List<Sighting> getAllSighting();
 
-    Orginization addOrginization(Orginization orginization);
+    Sighting addSighting(Sighting sighting);
 
-    void updateOrginization(Orginization orginization);
+    void updateSighting(Sighting sighting);
 
-    void deleteOrginizationById(int id);
+    void deleteSightingById(int id);
 }
