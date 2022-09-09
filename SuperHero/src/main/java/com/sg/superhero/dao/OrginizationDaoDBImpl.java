@@ -18,8 +18,8 @@ public class OrginizationDaoDBImpl implements  OrginizationDao {
 
     @Override
     public Orginization getOrginizationById(int id) {
-        final String GET_ORGINZATION = "SELECT * FROM orginization where id= ? ";
-        return jdbc.queryForObject(GET_ORGINZATION, new OrginizationMapper());
+        final String GET_ORGINZATION = "SELECT * FROM orginization WHERE id= ?";
+        return jdbc.queryForObject(GET_ORGINZATION, new OrginizationMapper(),id);
     }
 
     @Override
@@ -47,8 +47,8 @@ public class OrginizationDaoDBImpl implements  OrginizationDao {
 
     @Override
     public void updateOrginization(Orginization orginization) {
-        final String UPDATE_LOCATION = "UPDATE orginization SET name ?, address ?, description = ? contactInfo = ?" +
-                " allignment ?";
+        final String UPDATE_LOCATION = "UPDATE orginization SET name= ?, address = ?, description = ?, contactInfo = ?," +
+                " allignment = ? WHERE id = ?";
         jdbc.update(UPDATE_LOCATION,orginization.getName(),orginization.getAddress(),orginization.getDescription(),
                 orginization.getContactInfo(),orginization.getAllignment(),orginization.getId());
 

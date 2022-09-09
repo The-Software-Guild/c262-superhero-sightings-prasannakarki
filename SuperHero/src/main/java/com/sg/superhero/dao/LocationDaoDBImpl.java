@@ -42,7 +42,7 @@ public class LocationDaoDBImpl implements LocationDao{
                 location.getAddress(),
                 location.getDescription(),
                 location.getLatitude(),
-                location.getLongitute());
+                location.getLongitude());
         int newId = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
         location.setId(newId);
 
@@ -51,10 +51,11 @@ public class LocationDaoDBImpl implements LocationDao{
 
     @Override
     public void updateLocation(Location location) {
-        final String UPDATE_LOCATION = "UPDATE location SET name = ?, address = ?, description = ? latitude = ?" +
-                " longitude = ?";
+        final String UPDATE_LOCATION = "UPDATE location SET name = ?, address = ?, description = ? ,latitude = ? ,longitude = ? " +
+                "WHERE id = ?";
+
         jdbc.update(UPDATE_LOCATION,location.getName(),location.getAddress(),location.getDescription(),
-                location.getLatitude(),location.getLongitute(),location.getId());
+                location.getLatitude(),location.getLongitude(),location.getId());
 
     }
 
@@ -75,10 +76,11 @@ public class LocationDaoDBImpl implements LocationDao{
             Location locationObj = new Location();
             locationObj.setId(rs.getInt("id"));
             locationObj.setName(rs.getString("name"));
-            locationObj.setDescription(rs.getString("description"));
             locationObj.setAddress(rs.getString("address"));
+            locationObj.setDescription(rs.getString("description"));
+            locationObj.setLongitude(rs.getString("longitude"));
             locationObj.setLatitude(rs.getString("latitude"));
-            locationObj.setLongitute(rs.getString("longitude"));
+
             return locationObj;
         }
 

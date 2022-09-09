@@ -43,7 +43,7 @@ public class LocationController {
         location.setName(locationName);
         location.setDescription(description);
         location.setAddress(address);
-        location.setLongitute(longitude);
+        location.setLongitude(longitude);
         location.setLatitude(latitude);
         locationDao.addLocation(location);
 

@@ -7,7 +7,7 @@ public class Location {
     private String name;
     private String address;
     private String description;
-    private String longitute;
+    private String longitude;
     private String latitude;
 
     public int getId() {
@@ -42,12 +42,12 @@ public class Location {
         this.description = description;
     }
 
-    public String getLongitute() {
-        return longitute;
+    public String getLongitude() {
+        return longitude;
     }
 
-    public void setLongitute(String longitute) {
-        this.longitute = longitute;
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
     }
 
     public String getLatitude() {
@@ -63,11 +63,11 @@ public class Location {
         if (this == o) return true;
         if (!(o instanceof Location)) return false;
         Location location = (Location) o;
-        return getId() == location.getId() && Objects.equals(getName(), location.getName()) && Objects.equals(getAddress(), location.getAddress()) && Objects.equals(getDescription(), location.getDescription()) && Objects.equals(getLongitute(), location.getLongitute()) && Objects.equals(getLatitude(), location.getLatitude());
+        return getId() == location.getId() && Objects.equals(getName(), location.getName()) && Objects.equals(getAddress(), location.getAddress()) && Objects.equals(getDescription(), location.getDescription()) && Objects.equals(getLongitude(), location.getLongitude()) && Objects.equals(getLatitude(), location.getLatitude());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getAddress(), getDescription(), getLongitute(), getLatitude());
+        return Objects.hash(getId(), getName(), getAddress(), getDescription(), getLongitude(), getLatitude());
     }
 }
