@@ -88,7 +88,7 @@
         <td th:text="${location.name}">Location Name</td>
         <td th:text="${location.address}">Address</td>
         <td th:text="${location.description}">Description</td>
-        <td><a href="#" th:href="@{/detailLocation(id=${location.id})}">Detail</a></td>
+        <td><a href="#" th:href="@{/locationDetail(id=${location.id})}">Detail</a></td>
         <td><a href="#" th:href="@{/editLocation(id=${location.id})}">Edit</a></td>
         <td><a href="#" th:href="@{/deleteLocation(id=${location.id})}">Delete</a></td>
       </tr>

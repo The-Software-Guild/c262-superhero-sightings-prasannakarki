@@ -71,6 +71,12 @@ public class LocationController {
         locationDao.updateLocation(location);
         return "redirect:/locations";
     }
+    @GetMapping("locationDetail")
+    public String heroDetail(Integer id,Model model){
+        Location location = locationDao.getLocationById(id);
+        model.addAttribute("location",location);
+        return "locationDetail";
+    }
 
 
 

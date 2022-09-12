@@ -81,4 +81,10 @@ public class SightingController {
         sightingDao.updateSighting(sighting);
         return "redirect:/sightings";
     }
+    @GetMapping("sightingDetail")
+    public String sightingDetailDetail(Integer id,Model model){
+        Sighting sighting = sightingDao.getSightingById(id);
+        model.addAttribute("sighting",sighting);
+        return "sightingDetail";
+    }
 }

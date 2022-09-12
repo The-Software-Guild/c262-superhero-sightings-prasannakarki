@@ -68,4 +68,10 @@ public class OrginizationController {
         orginizationDao.updateOrginization(orginization);
         return "redirect:/orginizations";
     }
+    @GetMapping("orginizationDetail")
+    public String orginizationDetailDetail(Integer id,Model model){
+        Orginization orginization = orginizationDao.getOrginizationById(id);
+        model.addAttribute("orginization",orginization);
+        return "orginizationDetail";
+    }
 }

@@ -67,5 +67,11 @@ public class HeroController {
 
         return "redirect:/heros";
     }
+    @GetMapping("heroDetail")
+    public String heroDetail(Integer id,Model model){
+        Hero hero = heroDao.getHeroById(id);
+        model.addAttribute("hero",hero);
+        return "heroDetail";
+    }
 
 }

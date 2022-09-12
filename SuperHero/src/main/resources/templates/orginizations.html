@@ -24,7 +24,7 @@
     <form action="addOrginization" method="POST">
         <div class="form-group row">
             <label for="name" class="col-3 col-form-label">
-                ORginization Name</label>
+                Orginization Name</label>
             <div class="col-9">
                 <input type="text" name="name"
                        id="name" class="form-control"/>
@@ -49,7 +49,7 @@
 
         <div class="form-group row">
             <label for="contactInfo" class="col-3 col-form-label">
-                contactInfo</label>
+                contact Info</label>
             <div class="col-9">
                 <input type="text" name="contactInfo"
                        id="contactInfo" class="form-control"/>
@@ -88,7 +88,7 @@
                 <td th:text="${orginization.name}">Orginization Name</td>
                 <td th:text="${orginization.address}">Address</td>
                 <td th:text="${orginization.description}">Description</td>
-                <td><a href="#" th:href="@{/detailOrginization(id=${orginization.id})}">Detail</a></td>
+                <td><a href="#" th:href="@{/orginizationDetail(id=${orginization.id})}">Detail</a></td>
                 <td><a href="#" th:href="@{/editOrginization(id=${orginization.id})}">Edit</a></td>
                 <td><a href="#" th:href="@{/deleteOrginization(id=${orginization.id})}">Delete</a></td>
             </tr>

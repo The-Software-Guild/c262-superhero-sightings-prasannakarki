@@ -69,7 +69,7 @@
         <td th:text="${hero.name}">Hero Name</td>
         <td th:text="${hero.description}">Description</td>
         <td th:text="${hero.power}">Super Power</td>
-        <td><a href="#" th:href="@{/detailHero(id=${hero.id})}">Detail</a></td>
+        <td><a href="#" th:href="@{/heroDetail(id=${hero.id})}">Detail</a></td>
         <td><a href="#" th:href="@{/editHero(id=${hero.id})}">Edit</a></td>
         <td><a href="#" th:href="@{/deleteHero(id=${hero.id})}">Delete</a></td>
       </tr>
