@@ -1,8 +1,11 @@
 package com.sg.superhero.controller;
 
+import com.sg.superhero.dao.HeroDao;
 import com.sg.superhero.dao.LocationDao;
 import com.sg.superhero.dao.OrginizationDaoDBImpl;
 import com.sg.superhero.dao.SightingDao;
+import com.sg.superhero.entity.Hero;
+import com.sg.superhero.entity.Location;
 import com.sg.superhero.entity.Orginization;
 import com.sg.superhero.entity.Sighting;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +25,15 @@ public class SightingController {
     SightingDao sightingDao;
     @Autowired
     LocationDao locationDao;
+    @Autowired
+    HeroDao heroDao;
 
 
 
     @PostMapping("addSighting")
     public String addSighting(HttpServletRequest request){
-        String sightingHeroId = request.getParameter("hero");
-        String location = request.getParameter("location");
+        int sightingHeroId = Integer.parseInt(request.getParameter("hero"));
+        int location = Integer.parseInt(request.getParameter("location"));
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(request.getParameter("date"), formatter);
@@ -36,8 +41,8 @@ public class SightingController {
 
         Sighting sighting = new Sighting();
 
-        sighting.setHeroId(Integer.parseInt(sightingHeroId));
-        sighting.setLocation(Integer.parseInt(location));
+        sighting.setHero((sightingHeroId));
+        sighting.setLocation((location));
         sighting.setDate(dateTime);
         sightingDao.addSighting(sighting);
 
@@ -48,14 +53,19 @@ public class SightingController {
     @GetMapping("sightings")
     public String displaySightings(Model model){
         List<Sighting> sightings = sightingDao.getAllSighting();
+        List<Hero> heros = heroDao.getAllHeros();
+        List<Location> locations = locationDao.getAllLocation();
         model.addAttribute("sightings",sightings);
+        model.addAttribute("heros",heros);
+        model.addAttribute("locations",locations);
+
         return "sightings";
     }
 
     @GetMapping("deleteSighting")
     public String deleteSighting(Integer id) {
         sightingDao.deleteSightingById(id);
-        return "redirect:/orginizations";
+        return "redirect:/sightings";
     }
 
     @GetMapping("editSighting")
@@ -66,7 +76,7 @@ public class SightingController {
         return "editSighting";
     }
 
-    @PostMapping("editSightings.html")
+    @PostMapping("editSighting")
     public String performEditSighting( Sighting sighting) {
         sightingDao.updateSighting(sighting);
         return "redirect:/sightings";

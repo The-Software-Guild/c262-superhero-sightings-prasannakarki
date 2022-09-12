@@ -1,14 +1,23 @@
 package com.sg.superhero.entity;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.Objects;
 
 public class Sighting {
     private int id;
-    private int heroId;
+    private int hero;
     private int location;
     private LocalDateTime date;
+
+    private Hero heros;
+
+    public Hero getHeros() {
+        return heros;
+    }
+
+    public void setHeros(Hero heros) {
+        this.heros = heros;
+    }
 
     public int getId() {
         return id;
@@ -18,12 +27,12 @@ public class Sighting {
         this.id = id;
     }
 
-    public int getHeroId() {
-        return heroId;
+    public int getHero() {
+        return hero;
     }
 
-    public void setHeroId(int heroId) {
-        this.heroId = heroId;
+    public void setHero(int hero) {
+        this.hero = hero;
     }
 
     public int getLocation() {
@@ -47,11 +56,11 @@ public class Sighting {
         if (this == o) return true;
         if (!(o instanceof Sighting)) return false;
         Sighting sighting = (Sighting) o;
-        return getId() == sighting.getId() && getHeroId() == sighting.getHeroId() && getLocation() == sighting.getLocation() && Objects.equals(getDate(), sighting.getDate());
+        return getId() == sighting.getId() && getHero() == sighting.getHero() && getLocation() == sighting.getLocation() && Objects.equals(getDate(), sighting.getDate()) && Objects.equals(getHeros(), sighting.getHeros());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getHeroId(), getLocation(), getDate());
+        return Objects.hash(getId(), getHero(), getLocation(), getDate(), getHeros());
     }
 }

@@ -1,5 +1,6 @@
 package com.sg.superhero.dao;
 
+import com.sg.superhero.entity.Hero;
 import com.sg.superhero.entity.Orginization;
 import com.sg.superhero.entity.Sighting;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class SightingDaoDBImpl implements  SightingDao{
         final String INSERT_SIGHTING = "INSERT INTO sighting(hero,location,date) "
                 + "VALUES(?,?,?)";
         jdbc.update(INSERT_SIGHTING,
-                sighting.getHeroId(),
+                sighting.getHero(),
                 sighting.getLocation(),
                 sighting.getDate());
 
@@ -50,16 +51,23 @@ public class SightingDaoDBImpl implements  SightingDao{
     @Override
     public void updateSighting(Sighting sighting) {
         final String UPDATE_SIGHTING = "UPDATE sighting SET hero= ?, location = ?, date = ? WHERE id = ?";
-        jdbc.update(UPDATE_SIGHTING,sighting.getHeroId(),sighting.getLocation(),sighting.getDate(),
+        jdbc.update(UPDATE_SIGHTING,sighting.getHero(),sighting.getLocation(),sighting.getDate(),
                sighting.getId());
     }
 
     @Override
     public void deleteSightingById(int id) {
-        final String DELETE_SIGHTING = "DELETE FROM member WHERE orginization = ? ";
+        final String DELETE_SIGHTING = "DELETE FROM sighting WHERE id = ? ";
         jdbc.update(DELETE_SIGHTING,id);
 
 
+    }
+
+    @Override
+    public Sighting getSightingForHero(Hero hero) {
+        final String SELECT_HERO_FOR_SIGHTING = "SELECT h.* FROM hero h "
+                + "JOIN sighting s ON h.id = s.id ";
+        return jdbc.queryForObject(SELECT_HERO_FOR_SIGHTING,new SightingMapper());
     }
 
     public static final class SightingMapper implements RowMapper<Sighting> {
@@ -67,7 +75,7 @@ public class SightingDaoDBImpl implements  SightingDao{
         public Sighting mapRow(ResultSet rs, int index) throws SQLException {
             Sighting sightingObj = new Sighting();
             sightingObj.setId(rs.getInt("id"));
-            sightingObj.setHeroId(rs.getInt("hero"));
+            sightingObj.setHero(rs.getInt("hero"));
             sightingObj.setLocation(rs.getInt("location"));
             sightingObj.setDate(rs.getTimestamp("date").toLocalDateTime());
 

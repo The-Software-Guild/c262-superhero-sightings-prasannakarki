@@ -11,6 +11,12 @@
     <title>Course Manager</title>
 </head>
 <body>
+<div class="container">
+<div class="row m-4">
+    <div class="col text-center border border-dark">
+        <h1><a href="/" class="text-dark">Super Sightings</a></h1>
+    </div>
+</div>
 <div class="col-3 text-center m-3">
     <span class="h3">Add Orginization</span>
 </div>
@@ -82,14 +88,13 @@
                 <td th:text="${orginization.name}">Orginization Name</td>
                 <td th:text="${orginization.address}">Address</td>
                 <td th:text="${orginization.description}">Description</td>
-
+                <td><a href="#" th:href="@{/detailOrginization(id=${orginization.id})}">Detail</a></td>
                 <td><a href="#" th:href="@{/editOrginization(id=${orginization.id})}">Edit</a></td>
                 <td><a href="#" th:href="@{/deleteOrginization(id=${orginization.id})}">Delete</a></td>
             </tr>
             </tbody>
         </table>
     </div>
-</div>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

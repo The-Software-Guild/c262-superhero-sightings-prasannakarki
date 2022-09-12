@@ -5,13 +5,10 @@ import com.sg.superhero.entity.Member;
 import java.util.List;
 
 public interface MemberDao {
-    Member getMemberById(int id);
 
     List<Member> getAllMember();
 
     Member addMember(Member member);
 
-    void updateMember(Member member);
-
-    void deleteMemberById(int id);
+    void deleteMemberById(Member member, int id);
 }

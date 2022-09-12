@@ -1,7 +1,7 @@
-DROP DATABASE IF EXISTS superHeroDB;
-CREATE DATABASE superHeroDB;
+DROP DATABASE IF EXISTS superHeroDBTest;
+CREATE DATABASE superHeroDBTest;
 
-USE superHeroDB;
+USE superHeroDBTest;
 
 
 

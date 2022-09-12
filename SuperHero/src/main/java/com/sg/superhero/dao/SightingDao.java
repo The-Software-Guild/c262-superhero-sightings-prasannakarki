@@ -1,5 +1,6 @@
 package com.sg.superhero.dao;
 
+import com.sg.superhero.entity.Hero;
 import com.sg.superhero.entity.Orginization;
 import com.sg.superhero.entity.Sighting;
 
@@ -15,4 +16,6 @@ public interface SightingDao {
     void updateSighting(Sighting sighting);
 
     void deleteSightingById(int id);
+
+    Sighting getSightingForHero(Hero hero);
 }
